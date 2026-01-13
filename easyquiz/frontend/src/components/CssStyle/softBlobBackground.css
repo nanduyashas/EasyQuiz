@@ -1,0 +1,191 @@
+/* =======================================================
+   EASYQUIZ — Style 3 Gradient + Floating Quiz Bubbles
+   ======================================================= */
+
+
+
+
+/* =======================================================
+   FLOATING QUIZ BUBBLE ICONS LAYER
+   ======================================================= */
+
+.bubble-layer {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  pointer-events: none;
+  z-index: 1;
+
+}
+
+/* ===== Bubble Base Style ===== */
+.bubble {
+  position: absolute;
+  font-size: 38px;
+  opacity: 0.16;
+  filter: blur(0.2px);
+  animation: bubbleFloat 14s ease-in-out infinite,
+             bubbleFade 8s ease-in-out infinite;
+}
+
+/* === Different color tones to match your UI palette === */
+.b1 { color: #7f7cff; } /* indigo */
+.b2 { color: #a88bff; } /* purple */
+.b3 { color: #87a8ff; } /* blue */
+.b4 { color: #c5b8ff; } /* soft lavender */
+
+
+/* =======================================================
+   ANIMATIONS
+   ======================================================= */
+
+@keyframes bubbleFloat {
+  0%   { transform: translateY(0px) scale(1); }
+  50%  { transform: translateY(-18px) scale(1.06); }
+  100% { transform: translateY(0px) scale(1); }
+}
+
+@keyframes bubbleFade {
+  0%   { opacity: 0.14; }
+  50%  { opacity: 0.22; }
+  100% { opacity: 0.14; }
+}
+.app-background {
+  position: relative;
+  width: 100%;
+  min-height: 100vh;
+  overflow: hidden;
+
+  /* STRONGER GLASS BASE */
+  background:
+    radial-gradient(circle at 15% 25%, rgba(180, 200, 255, 0.45), transparent 55%),
+    radial-gradient(circle at 80% 20%, rgba(210, 190, 255, 0.45), transparent 55%),
+    radial-gradient(circle at 60% 80%, rgba(255, 200, 235, 0.40), transparent 60%),
+    radial-gradient(circle at 30% 85%, rgba(200, 220, 255, 0.45), transparent 60%),
+    linear-gradient(
+      135deg,
+      #cad3f4 0%,
+      #d8defa 28%,
+      #cfd4ff 62%,
+      #e4d9ff 98%,
+      #fdfbff 100%
+    );
+}
+
+/* =======================================================
+   BLUR BLOBS (STRONGER GLOW)
+======================================================= */
+.app-background::before,
+.app-background::after {
+  content: "";
+  position: absolute;
+  width: 480px;
+  height: 480px;
+  border-radius: 50%;
+  filter: blur(65px);
+  opacity: 0.85;
+  z-index: 0;
+}
+
+/* LEFT TOP GLOW */
+.app-background::before {
+  top: -140px;
+  left: -120px;
+  background: radial-gradient(
+    circle at 30% 30%,
+    rgba(140, 165, 255, 0.9),
+    rgba(190, 170, 255, 0.85),
+    transparent 70%
+  );
+}
+
+/* =======================================================
+   FLOATING SPHERES (ENHANCED GLASS FEEL)
+======================================================= */
+.app-background .sphere {
+  position: absolute;
+  width: 190px;
+  height: 190px;
+  border-radius: 50%;
+
+  background: radial-gradient(
+    circle at 30% 30%,
+    rgba(255,255,255,0.95),
+    rgba(140,160,255,0.85) 60%
+  );
+
+  box-shadow:
+    0 25px 55px rgba(99,102,241,0.35),
+    inset 0 0 25px rgba(255,255,255,0.65);
+
+  opacity: 0.95;
+  filter: blur(0.4px);
+}
+
+/* =======================================================
+   📱 MOBILE RESPONSIVE OPTIMIZATION
+======================================================= */
+
+/* Tablets */
+@media (max-width: 1024px) {
+  .app-background::before,
+  .app-background::after {
+    width: 380px;
+    height: 380px;
+    filter: blur(55px);
+  }
+
+  .app-background .sphere {
+    width: 160px;
+    height: 160px;
+    filter: blur(0.35px);
+  }
+}
+
+/* Mobile */
+@media (max-width: 768px) {
+  .app-background {
+    background:
+      radial-gradient(circle at 20% 20%, rgba(180, 200, 255, 0.35), transparent 55%),
+      radial-gradient(circle at 80% 30%, rgba(210, 190, 255, 0.35), transparent 55%),
+      linear-gradient(
+        135deg,
+        #d4dcfb 0%,
+        #dde3ff 35%,
+        #e6ddff 75%,
+        #fdfbff 100%
+      );
+  }
+
+  .app-background::before,
+  .app-background::after {
+    width: 300px;
+    height: 300px;
+    filter: blur(45px);
+    opacity: 0.7;
+  }
+
+  .app-background .sphere {
+    width: 130px;
+    height: 130px;
+    box-shadow:
+      0 18px 38px rgba(99,102,241,0.28),
+      inset 0 0 18px rgba(255,255,255,0.6);
+  }
+}
+
+/* Small phones */
+@media (max-width: 480px) {
+  .app-background::before,
+  .app-background::after {
+    width: 240px;
+    height: 240px;
+    filter: blur(35px);
+  }
+
+  .app-background .sphere {
+    width: 100px;
+    height: 100px;
+    opacity: 0.85;
+  }
+}
